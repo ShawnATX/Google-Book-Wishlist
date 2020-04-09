@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://test:test22@dbh83.mlab.com:27837/heroku_frm9fq2q");
 
 
 app.get("*", (req, res) => {
