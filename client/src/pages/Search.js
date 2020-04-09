@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import API from '../utils/API';
-import { Jumbotron, Container, Card, Form, FormGroup, Label, Input, Button, ListGroup, ListGroupItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Jumbotron, Container, Form, FormGroup, Label, Input, Button, ListGroup, ListGroupItem } from 'reactstrap';
+import BookDeets from './BookDeets';
 
 
 const Search = (props) => {
@@ -21,6 +21,10 @@ const Search = (props) => {
         const { value } = event.target;
         setSearch(value);
     };
+
+    const handleSave = (book) => {
+        console.log(book);
+    }
 
 
     return (
@@ -43,17 +47,22 @@ const Search = (props) => {
 
                 {books.length ? (
                     <ListGroup>
-                        {books.map(book => (
-                            <ListGroupItem key={book._id}>
-                                <Card>
-                                    <strong>
-                                        {book.volumeInfo.title}
-                                        {book.volumeInfo.subtitle}
-                                    </strong>
-                                </Card>
+                        {books.map(book => {
+                            let newBook = {
+                                title: book.volumeInfo.title,
+                                subtitle: book.volumeInfo.subtitle,
+                                authors: (book.volumeInfo.authors) ? book.volumeInfo.authors : [],
+                                image: (book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : book.volumeInfo.previewLink,
+                                description: (book.volumeInfo.description) ? book.volumeInfo.description : ""
+                            }
+                               return (
+                                <ListGroupItem key={book.id}>
+                                <BookDeets 
+                                    book={newBook} 
+                                    onSave={() => handleSave(newBook)} />
                             </ListGroupItem>
-                        ))}
-                    </ListGroup>
+                        )} )}
+                        </ListGroup>
                 ) : (
                         <h3>No Results to Display</h3>
                     )

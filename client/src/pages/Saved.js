@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../utils/API';
 import { Link } from "react-router-dom";
-import { ListGroup, ListGroupItem, Container, Row, Col, Button } from 'reactstrap';
+import { ListGroup, ListGroupItem, Container, Button } from 'reactstrap';
 
 
 const Saved = (props) => {

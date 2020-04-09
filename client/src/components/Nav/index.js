@@ -8,8 +8,8 @@ const Nav = () => {
             <a className="navbar-brand" href="/">
                 Google Books Wishlist
           </a>
-            <Link to="/" alt="Home">Search</Link>
-            <Link to="/saved" alt="Saved Books">Saved</Link>
+            <Link to="/" alt="Home" className="text-muted pr-2">Search</Link>
+            <Link to="/saved" alt="Saved Books" className="text-muted">Saved</Link>
         </nav>
     );
 }
