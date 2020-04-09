@@ -23,7 +23,7 @@ const Search = (props) => {
     };
 
     const handleSave = (book) => {
-        console.log(book);
+        API.saveBook(book).then((res) => console.log("Book Saved!"));
     }
 
 
@@ -53,7 +53,8 @@ const Search = (props) => {
                                 subtitle: book.volumeInfo.subtitle,
                                 authors: (book.volumeInfo.authors) ? book.volumeInfo.authors : [],
                                 image: (book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : book.volumeInfo.previewLink,
-                                description: (book.volumeInfo.description) ? book.volumeInfo.description : ""
+                                description: (book.volumeInfo.description) ? book.volumeInfo.description : "",
+                                link: book.volumeInfo.previewLink
                             }
                                return (
                                 <ListGroupItem key={book.id}>
